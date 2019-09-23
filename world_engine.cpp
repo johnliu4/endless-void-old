@@ -3,7 +3,18 @@
 #include <glew/glew.h>
 #include <glfw/glfw3.h>
 
+#include "perlin.h"
+
 int main() {
+	PerlinNoise perlin(10, 5);
+	for (int y = 0; y < 12; y++) {
+		for (int x = 0; x < 27; x++) {
+			std::cout << (int) (perlin.get_value(x / 3.0f, y / 3.0f) * 1.0f) << " ";
+		}
+
+		std::cout << std::endl;
+	}
+	/*
 	glewExperimental = true;
 	if (!glfwInit()) {
 		return -1;
@@ -73,5 +84,5 @@ int main() {
 
 	glfwTerminate();
 	window = nullptr;
-	return 0;
+	return 0;*/
 }

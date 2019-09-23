@@ -129,7 +129,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="perlin.cpp" />
+    <ClCompile Include="physics_engine.cpp" />
+    <ClCompile Include="render_engine.cpp" />
+    <ClCompile Include="terrain.cpp" />
+    <ClCompile Include="terrain_generator.cpp" />
     <ClCompile Include="world_engine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="perlin.h" />
+    <ClInclude Include="physics_engine.h" />
+    <ClInclude Include="render_engine.h" />
+    <ClInclude Include="terrain.h" />
+    <ClInclude Include="terrain_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
