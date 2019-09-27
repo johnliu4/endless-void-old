@@ -22,6 +22,12 @@
     <Filter Include="Source Files\math">
       <UniqueIdentifier>{185e3aaa-1197-48fb-a49e-22fe8a85355a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\shaders">
+      <UniqueIdentifier>{03d6ad85-03f9-47eb-8855-c06d1b9ab856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game_state">
+      <UniqueIdentifier>{87888ab4-8b1a-483b-9d4e-946dc80b5aab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world_engine.cpp">
@@ -33,14 +39,29 @@
     <ClCompile Include="physics_engine.cpp">
       <Filter>Source Files\physics_engine</Filter>
     </ClCompile>
-    <ClCompile Include="terrain.cpp">
-      <Filter>Source Files\render_engine</Filter>
-    </ClCompile>
-    <ClCompile Include="terrain_generator.cpp">
-      <Filter>Source Files\render_engine</Filter>
-    </ClCompile>
     <ClCompile Include="perlin.cpp">
       <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="terrain_generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="state_ingame.cpp">
+      <Filter>Source Files\game_state</Filter>
+    </ClCompile>
+    <ClCompile Include="input_manager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -50,14 +71,46 @@
     <ClInclude Include="render_engine.h">
       <Filter>Source Files\render_engine</Filter>
     </ClInclude>
-    <ClInclude Include="terrain.h">
-      <Filter>Source Files\render_engine</Filter>
-    </ClInclude>
-    <ClInclude Include="terrain_generator.h">
-      <Filter>Source Files\render_engine</Filter>
-    </ClInclude>
     <ClInclude Include="perlin.h">
       <Filter>Source Files\math</Filter>
     </ClInclude>
+    <ClInclude Include="terrain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="terrain_generator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="loader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world_engine.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_state.h">
+      <Filter>Source Files\game_state</Filter>
+    </ClInclude>
+    <ClInclude Include="state_ingame.h">
+      <Filter>Source Files\game_state</Filter>
+    </ClInclude>
+    <ClInclude Include="input_manager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="frag.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="vertex.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="camera_vert.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="camera_frag.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

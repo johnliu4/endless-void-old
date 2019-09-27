@@ -129,19 +129,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="input_manager.cpp" />
+    <ClCompile Include="loader.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="perlin.cpp" />
     <ClCompile Include="physics_engine.cpp" />
     <ClCompile Include="render_engine.cpp" />
+    <ClCompile Include="state_ingame.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrain_generator.cpp" />
     <ClCompile Include="world_engine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="game_state.h" />
+    <ClInclude Include="input_manager.h" />
+    <ClInclude Include="loader.h" />
     <ClInclude Include="perlin.h" />
     <ClInclude Include="physics_engine.h" />
     <ClInclude Include="render_engine.h" />
+    <ClInclude Include="state_ingame.h" />
     <ClInclude Include="terrain.h" />
     <ClInclude Include="terrain_generator.h" />
+    <ClInclude Include="world_engine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="camera_frag.glsl" />
+    <None Include="camera_vert.glsl" />
+    <None Include="frag.glsl" />
+    <None Include="vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
