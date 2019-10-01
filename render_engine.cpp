@@ -1,3 +1,5 @@
+#include <glew/glew.h>
+
 #include "render_engine.h"
 
 RenderEngine* RenderEngine::instance = nullptr;
@@ -9,7 +11,11 @@ RenderEngine* RenderEngine::get_instance() {
 	return instance;
 }
 
-RenderEngine::RenderEngine() {}
+RenderEngine::RenderEngine() {
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	glEnable(GL_CULL_FACE);
+}
 
 RenderEngine::~RenderEngine() {
 	delete instance;

@@ -1,6 +1,7 @@
 #include "state_ingame.h"
 
-StateIngame::StateIngame() {}
+StateIngame::StateIngame() : terrain(200, 200) {
+}
 
 StateIngame::~StateIngame() {}
 

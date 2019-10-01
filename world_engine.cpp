@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 #include <glew/glew.h>
 #include <glfw/glfw3.h>
@@ -17,7 +18,7 @@ WorldEngine::WorldEngine(int window_width, int window_height) {
 		return;
 	}
 
-	window = glfwCreateWindow(1024, 768, "Hello world!", nullptr, nullptr);
+	window = glfwCreateWindow(window_width, window_height, "Hello world!", nullptr, nullptr);
 	if (!window) {
 		std::cout << "Failed to create GLFW window." << std::endl;
 		glfwTerminate();
@@ -32,6 +33,12 @@ WorldEngine::WorldEngine(int window_width, int window_height) {
 		return;
 	}
 
+	if (glfwRawMouseMotionSupported()) {
+		glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+	}
+
+	srand(time(nullptr));
+
 	input_manager = InputManager::get_instance();
 	input_manager->set_window(window);
 	physics_engine = new PhysicsEngine();
@@ -40,12 +47,11 @@ WorldEngine::WorldEngine(int window_width, int window_height) {
 }
 
 WorldEngine::~WorldEngine() {
+	delete input_manager;
 	delete physics_engine;
 	delete render_engine;
 	delete current_state;
-
 	glfwTerminate();
-	window = nullptr;
 }
 
 void WorldEngine::start() {
@@ -62,7 +68,7 @@ void WorldEngine::game_loop() {
 		current_state->render();
 
 		glfwSwapBuffers(window);
-		if (glfwWindowShouldClose(window)) {
+		if (glfwWindowShouldClose(window) || input_manager->get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			running = false;
 		}
 	}

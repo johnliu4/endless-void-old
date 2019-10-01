@@ -3,11 +3,19 @@
 
 #include <glew/glew.h>
 
+#include "perlin.h"
+
 class Terrain {
 private:
+	int width, height;
+	PerlinNoise perlin_noise;
+
 	GLuint vertex_buffer;
+	GLuint norm_buffer;
+
+	int num_verts;
 public:
-	Terrain();
+	Terrain(const int width, const int height);
 	~Terrain();
 	void render();
 };
