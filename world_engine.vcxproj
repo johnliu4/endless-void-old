@@ -129,29 +129,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="aabb.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="input_manager.cpp" />
     <ClCompile Include="loader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="math.cpp" />
     <ClCompile Include="perlin.cpp" />
     <ClCompile Include="physics_engine.cpp" />
+    <ClCompile Include="plane.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="render_engine.cpp" />
+    <ClCompile Include="sphere.cpp" />
     <ClCompile Include="state_ingame.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrain_generator.cpp" />
+    <ClCompile Include="world.cpp" />
     <ClCompile Include="world_engine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aabb.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="game_state.h" />
     <ClInclude Include="input_manager.h" />
     <ClInclude Include="loader.h" />
+    <ClInclude Include="math.h" />
     <ClInclude Include="perlin.h" />
     <ClInclude Include="physics_engine.h" />
+    <ClInclude Include="plane.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="render_engine.h" />
+    <ClInclude Include="sphere.h" />
     <ClInclude Include="state_ingame.h" />
     <ClInclude Include="terrain.h" />
     <ClInclude Include="terrain_generator.h" />
+    <ClInclude Include="world.h" />
     <ClInclude Include="world_engine.h" />
   </ItemGroup>
   <ItemGroup>

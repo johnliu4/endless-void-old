@@ -16,7 +16,6 @@ Camera::Camera() {
 
 	pitch = 0.0f;
 	yaw = 0.0f;
-	speed = 0.01f;
 	pos = glm::vec3(0.0f, 0.0f, 1.0f);
 
 	program_id = glCreateProgram();
@@ -30,92 +29,68 @@ Camera::Camera() {
 	glDeleteShader(vertex_id);
 	glDeleteShader(fragment_id);
 
-
-
 	shader_model_id = glGetUniformLocation(program_id, "model");
 	shader_view_id = glGetUniformLocation(program_id, "view");
 	shader_proj_id = glGetUniformLocation(program_id, "proj");
 	shader_light_pos_id = glGetUniformLocation(program_id, "light_worldspace_pos");
 }
 
+Camera::Camera(glm::vec3 pos, glm::vec3 dir) : Camera() {
+	this->pos = pos;
+	glm::vec3 dir_norm = glm::normalize(dir);
+	// get normal of projection of direction vector onto xz plane
+	glm::vec3 xz_plane_vec = glm::normalize(glm::vec3(dir_norm.x, 0.0f, dir_norm.z));
+	std::cout << xz_plane_vec.x << ", " << xz_plane_vec.z << std::endl;
+	// since a dot b = |a||b|cos(c) where c is the angle between a and b
+	pitch = glm::acos(glm::dot(xz_plane_vec, dir_norm));
+	if (dir_norm.y < 0.0f) {
+		pitch *= -1.0f;
+	}
+
+	yaw = glm::acos(glm::dot(xz_plane_vec, glm::vec3(1.0f, 0.0f, 0.0f)));
+}
+
 Camera::~Camera() {}
 
-void Camera::update() {
-	// attempt to move
-	glm::vec3 disp(0.0f);
-
-	InputManager* input_manager = InputManager::get_instance();
-	glm::vec2 cursor_delta = input_manager->get_cursor_delta();
-	input_manager->center_cursor();
-
-	constexpr GLfloat pi = glm::pi<GLfloat>();
-	yaw -= cursor_delta.x * 0.0007f;
-	yaw = fmod(yaw, pi * 2.0f);
-	if (yaw < 0.0f) {
-		yaw += pi * 2.0f;
-	}
-
-	pitch -= cursor_delta.y * 0.0007f;
-	if (pitch < -(pi * 0.5f)) {
-		pitch = -(pi * 0.5f);
-	} else if (pitch > pi * 0.5f) {
-		pitch = pi * 0.5f;
-	}
-
-	if (input_manager->get_key(GLFW_KEY_W) == GLFW_PRESS) {
-		disp.x = glm::cos(pitch) * glm::cos(yaw);
-		disp.y = glm::sin(pitch);
-		disp.z = glm::cos(pitch) * glm::sin(-yaw);
-	}
-
-	if (input_manager->get_key(GLFW_KEY_A) == GLFW_PRESS) {
-		disp.x = glm::cos(yaw + pi * 0.5f);
-		disp.z = glm::sin(-(yaw + pi * 0.5f));
-	}
-
-	if (input_manager->get_key(GLFW_KEY_S) == GLFW_PRESS) {
-		disp.x = glm::cos(pitch) * glm::cos(yaw + pi);
-		disp.y = -glm::sin(pitch);
-		disp.z = glm::cos(pitch) * glm::sin(-(yaw + pi));
-	}
-
-	if (input_manager->get_key(GLFW_KEY_D) == GLFW_PRESS) {
-		disp.x = glm::cos(yaw - pi * 0.5f);
-		disp.z = glm::sin(-(yaw - pi * 0.5f));
-	}
-
-	if (input_manager->get_key(GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
-		disp.y += 1.0f;
-	}
-
-	if (input_manager->get_key(GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
-		disp.y -= 1.0f;
-	}
-
-
+void Camera::use_program() {
 	glm::vec3 dir(1.0f, 0.0f, 0.0f);
 	dir = glm::rotateZ(dir, pitch);
 	dir = glm::rotateY(dir, yaw);
-
-
-	if (disp.x * disp.x + disp.y * disp.y + disp.z * disp.z > 0.0001f) {
-		disp = glm::normalize(disp);
-		pos += disp * 0.2f;
-	}
-
 	view_mat = glm::lookAt(
 		pos,
 		pos + dir,
 		glm::vec3(0.0f, 1.0f, 0.0f));
-}
 
-void Camera::render() {
 	glm::mat4 mvp = proj_mat * view_mat * model_mat;
-	glm::vec3 light_pos(0.0f, 5.0f, 0.0f);
+
 	glUseProgram(program_id);
 	glUniformMatrix4fv(shader_model_id, 1, GL_FALSE, &model_mat[0][0]);
 	glUniformMatrix4fv(shader_view_id, 1, GL_FALSE, &view_mat[0][0]);
 	glUniformMatrix4fv(shader_proj_id, 1, GL_FALSE, &proj_mat[0][0]);
 	//glUniform3fv(shader_light_pos_id, 1, &light_pos[0]);
 	glUniform3f(shader_light_pos_id, 0.0f, 10.0f, 0.0f);
+}
+
+void Camera::set_yaw(GLfloat yaw) {
+	this->yaw = yaw;
+}
+
+GLfloat Camera::get_yaw() {
+	return yaw;
+}
+
+void Camera::set_pitch(GLfloat pitch) {
+	this->pitch = pitch;
+}
+
+GLfloat Camera::get_pitch() {
+	return pitch;
+}
+
+void Camera::set_pos(glm::vec3 pos) {
+	this->pos = pos;
+}
+
+glm::vec3 Camera::get_pos() {
+	return pos;
 }

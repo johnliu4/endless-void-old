@@ -1,15 +1,17 @@
 #include "state_ingame.h"
 
-StateIngame::StateIngame() : terrain(200, 200) {
+StateIngame::StateIngame() {
+	world = new World();
 }
 
-StateIngame::~StateIngame() {}
+StateIngame::~StateIngame() {
+	delete world;
+}
 
 void StateIngame::update() {
-	camera.update();
+	world->update();
 }
 
 void StateIngame::render() {
-	camera.render();
-	terrain.render();
+	world->render();
 }

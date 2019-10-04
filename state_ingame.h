@@ -2,14 +2,13 @@
 #define STATE_INGAME_H
 
 #include "game_state.h"
-#include "camera.h"
-#include "terrain.h"
+#include "world.h"
 
 class StateIngame : public GameState {
 private:
-	Camera camera;
-	Terrain terrain;
+	World* world;
 public:
+
 	StateIngame();
 	~StateIngame();
 	void render();
