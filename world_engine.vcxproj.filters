@@ -25,6 +25,15 @@
     <Filter Include="Source Files\game_state">
       <UniqueIdentifier>{87888ab4-8b1a-483b-9d4e-946dc80b5aab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\entities">
+      <UniqueIdentifier>{e058e817-800c-4cce-8087-e95ba451102a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render_engine\entities">
+      <UniqueIdentifier>{458034e7-3b64-4bad-92f8-84768e274a7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entities\floors">
+      <UniqueIdentifier>{c89625ae-2050-45b3-8df4-1d35ac1240b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world_engine.cpp">
@@ -43,9 +52,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -78,6 +84,63 @@
     <ClCompile Include="plane.cpp">
       <Filter>Source Files\physics_engine</Filter>
     </ClCompile>
+    <ClCompile Include="shape.cpp">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="crate.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="entity_manager.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="render_loader.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="lodepng.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="scene_entity.cpp">
+      <Filter>Source Files\render_engine\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="wireframe.cpp">
+      <Filter>Source Files\render_engine\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="obj_loader.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="slate_platform1.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="bush1.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="maze.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="path_generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="floor.cpp">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClCompile>
+    <ClCompile Include="floor_normal.cpp">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClCompile>
+    <ClCompile Include="starting_platform.cpp">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClCompile>
+    <ClCompile Include="dynamic_aabb.cpp">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="texture_manager.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="physics_engine.h">
@@ -93,9 +156,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="loader.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="world_engine.h">
@@ -131,6 +191,63 @@
     <ClInclude Include="plane.h">
       <Filter>Source Files\physics_engine</Filter>
     </ClInclude>
+    <ClInclude Include="shape.h">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="crate.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="entity_manager.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="render_loader.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lodepng.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_entity.h">
+      <Filter>Source Files\render_engine\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="wireframe.h">
+      <Filter>Source Files\render_engine\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="obj_loader.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="slate_platform1.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="bush1.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="maze.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="path_generator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="floor.h">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClInclude>
+    <ClInclude Include="floor_normal.h">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClInclude>
+    <ClInclude Include="starting_platform.h">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClInclude>
+    <ClInclude Include="dynamic_aabb.h">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="texture_manager.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="frag.glsl">
@@ -145,5 +262,22 @@
     <None Include="camera_frag.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
+    <None Include="default_frag.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="default_vert.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="resources\slate_platform1.obj">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\cube.obj">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\crate_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

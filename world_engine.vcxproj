@@ -130,47 +130,98 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aabb.cpp" />
+    <ClCompile Include="bush1.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="crate.cpp" />
+    <ClCompile Include="dynamic_aabb.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="entity_manager.cpp" />
+    <ClCompile Include="floor.cpp" />
+    <ClCompile Include="floor_normal.cpp" />
     <ClCompile Include="input_manager.cpp" />
-    <ClCompile Include="loader.cpp" />
+    <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math.cpp" />
+    <ClCompile Include="maze.cpp" />
+    <ClCompile Include="obj_loader.cpp" />
+    <ClCompile Include="path_generator.cpp" />
     <ClCompile Include="perlin.cpp" />
     <ClCompile Include="physics_engine.cpp" />
     <ClCompile Include="plane.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="render_engine.cpp" />
+    <ClCompile Include="render_loader.cpp" />
+    <ClCompile Include="scene.cpp" />
+    <ClCompile Include="scene_entity.cpp" />
+    <ClCompile Include="shape.cpp" />
+    <ClCompile Include="slate_platform1.cpp" />
     <ClCompile Include="sphere.cpp" />
+    <ClCompile Include="starting_platform.cpp" />
     <ClCompile Include="state_ingame.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrain_generator.cpp" />
+    <ClCompile Include="texture_manager.cpp" />
+    <ClCompile Include="wireframe.cpp" />
     <ClCompile Include="world.cpp" />
     <ClCompile Include="world_engine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aabb.h" />
+    <ClInclude Include="bush1.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="crate.h" />
+    <ClInclude Include="dynamic_aabb.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="entity_manager.h" />
+    <ClInclude Include="floor.h" />
+    <ClInclude Include="floor_normal.h" />
     <ClInclude Include="game_state.h" />
     <ClInclude Include="input_manager.h" />
-    <ClInclude Include="loader.h" />
+    <ClInclude Include="lodepng.h" />
     <ClInclude Include="math.h" />
+    <ClInclude Include="maze.h" />
+    <ClInclude Include="obj_loader.h" />
+    <ClInclude Include="path_generator.h" />
     <ClInclude Include="perlin.h" />
     <ClInclude Include="physics_engine.h" />
     <ClInclude Include="plane.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="render_engine.h" />
+    <ClInclude Include="render_loader.h" />
+    <ClInclude Include="scene.h" />
+    <ClInclude Include="scene_entity.h" />
+    <ClInclude Include="shape.h" />
+    <ClInclude Include="slate_platform1.h" />
     <ClInclude Include="sphere.h" />
+    <ClInclude Include="starting_platform.h" />
     <ClInclude Include="state_ingame.h" />
     <ClInclude Include="terrain.h" />
     <ClInclude Include="terrain_generator.h" />
+    <ClInclude Include="texture_manager.h" />
+    <ClInclude Include="wireframe.h" />
     <ClInclude Include="world.h" />
     <ClInclude Include="world_engine.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="camera_frag.glsl" />
     <None Include="camera_vert.glsl" />
+    <None Include="default_frag.glsl" />
+    <None Include="default_vert.glsl" />
     <None Include="frag.glsl" />
     <None Include="vertex.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\crate_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\slate_platform1.obj">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\cube.obj">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

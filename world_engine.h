@@ -1,6 +1,7 @@
 #ifndef WORLD_ENGINE_H
 #define WORLD_ENGINE_H
 
+#include <glew/glew.h>
 #include <glfw/glfw3.h>
 
 #include "input_manager.h"
@@ -11,7 +12,7 @@
 class WorldEngine {
 private:
 	// updates per second
-	static const int TICK_RATE = 60;
+	static const int TICK_RATE = 30;
 	int window_width, window_height;
 
 	GLFWwindow* window;

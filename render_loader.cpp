@@ -4,11 +4,12 @@
 #include <string>
 #include <vector>
 
-#include "loader.h"
+#include "render_loader.h"
+#include "lodepng.h"
 
 GLuint load_shader(const char* file_path, const GLuint shader_type) {
 	GLuint shader_id = glCreateShader(shader_type);
-	
+
 	// parse data from shader file
 	std::string shader_data;
 	std::ifstream shader_stream(file_path, std::ios::in);
@@ -41,4 +42,25 @@ GLuint load_shader(const char* file_path, const GLuint shader_type) {
 	}
 
 	return shader_id;
+}
+
+GLuint load_png(const char* file_path) {
+	std::vector<unsigned char> image;
+	unsigned int width, height;
+	unsigned int error = lodepng::decode(image, width, height, file_path);
+
+	if (error != 0) {
+		std::cout << "Load PNG error " << error << ": " << lodepng_error_text(error) << std::endl;
+		return 0;
+	}
+
+	GLuint texture_id;
+	glGenTextures(1, &texture_id);
+	glBindTexture(GL_TEXTURE_2D, texture_id);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image[0]);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+	return texture_id;
 }

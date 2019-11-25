@@ -1,5 +1,5 @@
 #include "terrain.h"
-#include "loader.h"
+//#include "loader.h"
 
 #include <iostream>
 
@@ -36,8 +36,6 @@ Terrain::Terrain(const int width, const int height) {
 			vertices[(x * (height + 1) + z) * 3 + 2] = z * scale;
 		}
 	}
-
-	std::cout << min << ", " << max << std::endl;
 
 	// for each 'square' formed in the vertices, build two triangles
 	// starting from the lower left corner of the square

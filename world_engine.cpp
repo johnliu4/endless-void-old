@@ -6,8 +6,6 @@
 
 #include "world_engine.h"
 #include "state_ingame.h"
-#include "perlin.h"
-#include "terrain.h"
 
 WorldEngine::WorldEngine(int window_width, int window_height) {
 	this->window_width = window_width;
@@ -18,7 +16,7 @@ WorldEngine::WorldEngine(int window_width, int window_height) {
 		return;
 	}
 
-	window = glfwCreateWindow(window_width, window_height, "Hello world!", nullptr, nullptr);
+	window = glfwCreateWindow(window_width, window_height, "World Engine", nullptr, nullptr);
 	if (!window) {
 		std::cout << "Failed to create GLFW window." << std::endl;
 		glfwTerminate();
@@ -39,11 +37,11 @@ WorldEngine::WorldEngine(int window_width, int window_height) {
 
 	srand(time(nullptr));
 
-	input_manager = InputManager::get_instance();
+	input_manager = new InputManager();
 	input_manager->set_window(window);
 	physics_engine = new PhysicsEngine();
 	render_engine = new RenderEngine();
-	current_state = new StateIngame();
+	current_state = new StateIngame(input_manager, physics_engine, render_engine);
 }
 
 WorldEngine::~WorldEngine() {
@@ -60,11 +58,28 @@ void WorldEngine::start() {
 
 void WorldEngine::game_loop() {
 	bool running = true;
-	while (running) {
-		input_manager->poll_input();
-		current_state->update();
 
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	double before_time = glfwGetTime();
+	double fps_timer = 0;
+	int frame_count = 0;
+
+	while (running) {
+		double current_time = glfwGetTime();
+		double delta_time = current_time - before_time;
+		before_time = current_time;
+
+		frame_count++;
+		fps_timer += delta_time;
+		if (fps_timer >= 1.0) {
+			fps_timer -= 1.0;
+			glfwSetWindowTitle(window, ("World Engine FPS: " + std::to_string(frame_count)).c_str());
+			frame_count = 0;
+		}
+
+
+		input_manager->poll_input();
+
+		current_state->update();
 		current_state->render();
 
 		glfwSwapBuffers(window);

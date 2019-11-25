@@ -6,14 +6,11 @@
 
 class InputManager {
 private:
-	static InputManager* singleton;
 	GLFWwindow* window;
 	glm::vec2 prev_cursor_pos;
-	InputManager();
-public:
-	static InputManager* get_instance();
-	~InputManager();
 
+public:
+	InputManager();
 	int get_key(int glfw_key);
 	glm::dvec2 get_cursor_pos();
 	void set_cursor_pos(double x, double y);

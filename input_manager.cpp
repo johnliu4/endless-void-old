@@ -1,21 +1,7 @@
 #include "input_manager.h"
 
-InputManager* InputManager::singleton = nullptr;
-
-InputManager* InputManager::get_instance() {
-	if (singleton == nullptr) {
-		singleton = new InputManager();
-	}
-
-	return singleton;
-}
-
 InputManager::InputManager() : prev_cursor_pos(0.0f) {
 	window = nullptr;
-}
-
-InputManager::~InputManager() {
-	delete singleton;
 }
 
 int InputManager::get_key(int glfw_key) {
@@ -45,8 +31,8 @@ void InputManager::center_cursor() {
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
 	glfwSetCursorPos(window, width / 2, height / 2);
-	prev_cursor_pos.x = width / 2;
-	prev_cursor_pos.y = height / 2;
+	prev_cursor_pos.x = width / 2.0f;
+	prev_cursor_pos.y = height / 2.0f;
 }
 
 void InputManager::poll_input() {
