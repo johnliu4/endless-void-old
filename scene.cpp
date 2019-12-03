@@ -26,7 +26,7 @@ Scene::Scene() {
 	proj_matrix_id = glGetUniformLocation(default_program_id, "proj");
 	texture_sampler_id = glGetUniformLocation(default_program_id, "texture_sampler");
 
-	glClearColor(0.521568627, 0.807843137, 0.921568627, 1.0f);
+	glClearColor(0.521568627f, 0.807843137f, 0.921568627f, 1.0f);
 
 	glUniform1i(texture_sampler_id, 0);
 }

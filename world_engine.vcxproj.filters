@@ -34,11 +34,11 @@
     <Filter Include="Source Files\entities\floors">
       <UniqueIdentifier>{c89625ae-2050-45b3-8df4-1d35ac1240b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui">
+      <UniqueIdentifier>{26dcb831-93d0-4d76-9510-97552d8e2df6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="world_engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="render_engine.cpp">
       <Filter>Source Files\render_engine</Filter>
     </ClCompile>
@@ -56,9 +56,6 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="state_ingame.cpp">
-      <Filter>Source Files\game_state</Filter>
     </ClCompile>
     <ClCompile Include="input_manager.cpp">
       <Filter>Source Files</Filter>
@@ -141,6 +138,18 @@
     <ClCompile Include="texture_manager.cpp">
       <Filter>Source Files\render_engine</Filter>
     </ClCompile>
+    <ClCompile Include="gui.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="state_in_game.cpp">
+      <Filter>Source Files\game_state</Filter>
+    </ClCompile>
+    <ClCompile Include="state_main_menu.cpp">
+      <Filter>Source Files\game_state</Filter>
+    </ClCompile>
+    <ClCompile Include="endless_void.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="physics_engine.h">
@@ -158,13 +167,7 @@
     <ClInclude Include="camera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="world_engine.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="game_state.h">
-      <Filter>Source Files\game_state</Filter>
-    </ClInclude>
-    <ClInclude Include="state_ingame.h">
       <Filter>Source Files\game_state</Filter>
     </ClInclude>
     <ClInclude Include="input_manager.h">
@@ -247,6 +250,18 @@
     </ClInclude>
     <ClInclude Include="texture_manager.h">
       <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="gui.h">
+      <Filter>Source Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="state_in_game.h">
+      <Filter>Source Files\game_state</Filter>
+    </ClInclude>
+    <ClInclude Include="state_main_menu.h">
+      <Filter>Source Files\game_state</Filter>
+    </ClInclude>
+    <ClInclude Include="endless_void.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

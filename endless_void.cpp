@@ -2,12 +2,12 @@
 #include <time.h>
 
 #include <glew/glew.h>
-#include <glfw/glfw3.h>
 
-#include "world_engine.h"
-#include "state_ingame.h"
+#include "endless_void.h"
+#include "state_main_menu.h"
+#include "state_in_game.h"
 
-WorldEngine::WorldEngine(int window_width, int window_height) {
+EndlessVoid::EndlessVoid(int window_width, int window_height) {
 	this->window_width = window_width;
 	this->window_height = window_height;
 
@@ -37,14 +37,15 @@ WorldEngine::WorldEngine(int window_width, int window_height) {
 
 	srand(time(nullptr));
 
-	input_manager = new InputManager();
+	input_manager = InputManager::get_instance();
 	input_manager->set_window(window);
 	physics_engine = new PhysicsEngine();
 	render_engine = new RenderEngine();
-	current_state = new StateIngame(input_manager, physics_engine, render_engine);
+	current_state = new StateInGame(input_manager, physics_engine, render_engine);
+	//current_state = new StateMainMenu(input_manager, render_engine, window);
 }
 
-WorldEngine::~WorldEngine() {
+EndlessVoid::~EndlessVoid() {
 	delete input_manager;
 	delete physics_engine;
 	delete render_engine;
@@ -52,11 +53,11 @@ WorldEngine::~WorldEngine() {
 	glfwTerminate();
 }
 
-void WorldEngine::start() {
+void EndlessVoid::start() {
 	game_loop();
 }
 
-void WorldEngine::game_loop() {
+void EndlessVoid::game_loop() {
 	bool running = true;
 
 	double before_time = glfwGetTime();

@@ -1,5 +1,5 @@
-#ifndef WORLD_ENGINE_H
-#define WORLD_ENGINE_H
+#ifndef ENDLESS_VOID_H
+#define ENDLESS_VOID_H
 
 #include <glew/glew.h>
 #include <glfw/glfw3.h>
@@ -9,7 +9,7 @@
 #include "render_engine.h"
 #include "game_state.h"
 
-class WorldEngine {
+class EndlessVoid {
 private:
 	// updates per second
 	static const int TICK_RATE = 30;
@@ -23,8 +23,8 @@ private:
 
 	void game_loop();
 public:
-	WorldEngine(int window_width, int window_height);
-	~WorldEngine();
+	EndlessVoid(int window_width, int window_height);
+	~EndlessVoid();
 	void start();
 };
 

@@ -3,10 +3,7 @@
 
 #include <list>
 
-#include <glew/glew.h>
-
 #include "scene.h"
-
 #include "texture_manager.h"
 
 class RenderEngine {

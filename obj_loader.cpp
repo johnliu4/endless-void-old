@@ -180,6 +180,8 @@ SceneEntity* load_obj(const char* file_path) {
 	} else {
 		std::cout << "Load OBJ error " << file_path << std::endl;
 	}
+
+	return nullptr;
 }
 
 std::vector<std::string> split(std::string str, char delimiter) {

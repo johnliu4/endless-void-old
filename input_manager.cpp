@@ -1,7 +1,19 @@
+#include <iostream>
+
 #include "input_manager.h"
+
+InputManager* InputManager::instance = nullptr;
 
 InputManager::InputManager() : prev_cursor_pos(0.0f) {
 	window = nullptr;
+}
+
+InputManager* InputManager::get_instance() {
+	if (InputManager::instance == nullptr) {
+		InputManager::instance = new InputManager();
+	}
+
+	return InputManager::instance;
 }
 
 int InputManager::get_key(int glfw_key) {
@@ -41,4 +53,20 @@ void InputManager::poll_input() {
 
 void InputManager::set_window(GLFWwindow* window) {
 	this->window = window;
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
+}
+
+void InputManager::add_mouse_button_event(MouseButtonEvent event) {
+	mouse_button_events.push(event);
+}
+
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
+	InputManager* input_manager = InputManager::get_instance();
+	double x, y;
+	glfwGetCursorPos(window, &x, &y);
+	input_manager->add_mouse_button_event({ button, action, mods, x, y });
+}
+
+std::queue<MouseButtonEvent>& InputManager::get_mouse_button_events() {
+	return mouse_button_events;
 }

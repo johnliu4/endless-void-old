@@ -1,5 +1,5 @@
-#ifndef STATE_INGAME_H
-#define STATE_INGAME_H
+#ifndef STATE_IN_GAME_H
+#define	STATE_IN_GAME_H
 
 #include "game_state.h"
 #include "world.h"
@@ -7,7 +7,7 @@
 #include "physics_engine.h"
 #include "render_engine.h"
 
-class StateIngame : public GameState {
+class StateInGame : public GameState {
 private:
 	InputManager* input_manager;
 	PhysicsEngine* physics_engine;
@@ -15,8 +15,8 @@ private:
 
 	World* world;
 public:
-	StateIngame(InputManager* input_manager, PhysicsEngine* physics_engine, RenderEngine* render_engine);
-	~StateIngame();
+	StateInGame(InputManager* input_manager, PhysicsEngine* physics_engine, RenderEngine* render_engine);
+	~StateInGame();
 	void update();
 	void render();
 };
