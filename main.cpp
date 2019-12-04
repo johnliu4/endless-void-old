@@ -1,6 +1,7 @@
-#include "world_engine.h"
+#include <glew/glew.h>
+#include "endless_void.h"
 
 int main() {
-	WorldEngine game(1280, 720);
+	EndlessVoid game(1280, 720);
 	game.start();
 }

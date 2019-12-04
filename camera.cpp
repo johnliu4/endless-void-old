@@ -2,28 +2,25 @@
 #include <iostream>
 #include <glfw/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/rotate_vector.hpp>
 
 #include "camera.h"
-#include "loader.h"
+
 #include "input_manager.h"
 
 Camera::Camera() {
 	proj_mat = glm::perspective(
-		glm::radians(45.0f), 16.0f / 9.0f, 0.1f, 100.0f);
-	view_mat = glm::lookAt(
-		glm::vec3(4, 3, 3),
-		glm::vec3(0, 0, 0),
-		glm::vec3(0, 1, 0));
+		glm::radians(45.0f), 16.0f / 9.0f, 0.1f, 200.0f);
+	view_mat = glm::mat4(1.0f);
 	model_mat = glm::mat4(1.0f);
 
 	pitch = 0.0f;
 	yaw = 0.0f;
-	speed = 0.01f;
-	pos = glm::vec3(4.0f, 3.0f, 3.0f);
+	pos = glm::vec3(0.0f, 0.0f, 1.0f);
 
 	program_id = glCreateProgram();
-	GLuint vertex_id = load_shader("camera_vert.glsl", GL_VERTEX_SHADER);
-	GLuint fragment_id = load_shader("camera_frag.glsl", GL_FRAGMENT_SHADER);
+	GLuint vertex_id = 1;
+	GLuint fragment_id = 2;
 	glAttachShader(program_id, vertex_id);
 	glAttachShader(program_id, fragment_id);
 	glLinkProgram(program_id);
@@ -31,47 +28,66 @@ Camera::Camera() {
 	glDetachShader(program_id, fragment_id);
 	glDeleteShader(vertex_id);
 	glDeleteShader(fragment_id);
-	shader_mat_id = glGetUniformLocation(program_id, "mvp");
+
+	shader_model_id = glGetUniformLocation(program_id, "model");
+	shader_view_id = glGetUniformLocation(program_id, "view");
+	shader_proj_id = glGetUniformLocation(program_id, "proj");
+	shader_light_pos_id = glGetUniformLocation(program_id, "light_worldspace_pos");
+}
+
+Camera::Camera(glm::vec3 pos, glm::vec3 dir) : Camera() {
+	this->pos = pos;
+	glm::vec3 dir_norm = glm::normalize(dir);
+	// get normal of projection of direction vector onto xz plane
+	glm::vec3 xz_plane_vec = glm::normalize(glm::vec3(dir_norm.x, 0.0f, dir_norm.z));
+	// since a dot b = |a||b|cos(c) where c is the angle between a and b
+	pitch = glm::acos(glm::dot(xz_plane_vec, dir_norm));
+	if (dir_norm.y < 0.0f) {
+		pitch *= -1.0f;
+	}
+
+	yaw = glm::acos(glm::dot(xz_plane_vec, glm::vec3(1.0f, 0.0f, 0.0f)));
 }
 
 Camera::~Camera() {}
 
-void Camera::update() {
-	// attempt to move
-	glm::vec3 disp(0.0f);
+void Camera::use_program() {
+	glm::vec3 dir(1.0f, 0.0f, 0.0f);
+	dir = glm::rotateZ(dir, pitch);
+	dir = glm::rotateY(dir, yaw);
+	view_mat = glm::lookAt(
+		pos,
+		pos + dir,
+		glm::vec3(0.0f, 1.0f, 0.0f));
 
-	InputManager* input_manager = InputManager::get_instance();
-	if (input_manager->get_key(GLFW_KEY_W) == GLFW_PRESS) {
-		disp.z -= 1.0f;
-	}
-
-	if (input_manager->get_key(GLFW_KEY_A) == GLFW_PRESS) {
-		disp.x -= 1.0f;
-	}
-
-	if (input_manager->get_key(GLFW_KEY_S) == GLFW_PRESS) {
-		disp.z += 1.0f;
-	}
-
-	if (input_manager->get_key(GLFW_KEY_D) == GLFW_PRESS) {
-		disp.x += 1.0f;
-	}
-
-	if (disp.x * disp.x + disp.z * disp.z > 0.0001f) {
-		disp = glm::normalize(disp);
-		std::cout << disp.x << ", " << disp.z << std::endl;
-		pos += disp;
-
-		view_mat = glm::lookAt(
-			pos,
-			glm::vec3(0, 0, 0),
-			glm::vec3(0, 1, 0));
-	}
+	glUseProgram(program_id);
+	glUniformMatrix4fv(shader_model_id, 1, GL_FALSE, &model_mat[0][0]);
+	glUniformMatrix4fv(shader_view_id, 1, GL_FALSE, &view_mat[0][0]);
+	glUniformMatrix4fv(shader_proj_id, 1, GL_FALSE, &proj_mat[0][0]);
+	//glUniform3fv(shader_light_pos_id, 1, &light_pos[0]);
+	glUniform3f(shader_light_pos_id, 0.0f, 10.0f, 0.0f);
 }
 
-void Camera::render() {
+void Camera::set_yaw(GLfloat yaw) {
+	this->yaw = yaw;
+}
 
-	glm::mat4 mvp = proj_mat * view_mat * model_mat;
-	glUseProgram(program_id);
-	glUniformMatrix4fv(shader_mat_id, 1, GL_FALSE, &mvp[0][0]);
+GLfloat Camera::get_yaw() {
+	return yaw;
+}
+
+void Camera::set_pitch(GLfloat pitch) {
+	this->pitch = pitch;
+}
+
+GLfloat Camera::get_pitch() {
+	return pitch;
+}
+
+void Camera::set_pos(glm::vec3 pos) {
+	this->pos = pos;
+}
+
+glm::vec3 Camera::get_pos() {
+	return pos;
 }

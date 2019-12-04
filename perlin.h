@@ -12,8 +12,13 @@ private:
 	int width, height;
 	glm::vec2** grads;
 public:
-	PerlinNoise(const int width, const int height);
+	PerlinNoise();
 	~PerlinNoise();
+	// removes the Perlin gradients
+	void clear();
+	// initializes a new matrix of gradients of size width * height
+	void generate(const int width, const int height);
+	GLfloat cosine_interp(GLfloat n1, GLfloat n2, GLfloat mu);
 	GLfloat get_value(GLfloat x, GLfloat y);
 };
 

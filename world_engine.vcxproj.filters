@@ -19,28 +19,31 @@
     <Filter Include="Source Files\physics_engine">
       <UniqueIdentifier>{784cf3ea-e896-4347-bd45-ac939a034a83}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\math">
-      <UniqueIdentifier>{185e3aaa-1197-48fb-a49e-22fe8a85355a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\shaders">
       <UniqueIdentifier>{03d6ad85-03f9-47eb-8855-c06d1b9ab856}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\game_state">
       <UniqueIdentifier>{87888ab4-8b1a-483b-9d4e-946dc80b5aab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\entities">
+      <UniqueIdentifier>{e058e817-800c-4cce-8087-e95ba451102a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render_engine\entities">
+      <UniqueIdentifier>{458034e7-3b64-4bad-92f8-84768e274a7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entities\floors">
+      <UniqueIdentifier>{c89625ae-2050-45b3-8df4-1d35ac1240b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui">
+      <UniqueIdentifier>{26dcb831-93d0-4d76-9510-97552d8e2df6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="world_engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="render_engine.cpp">
       <Filter>Source Files\render_engine</Filter>
     </ClCompile>
     <ClCompile Include="physics_engine.cpp">
       <Filter>Source Files\physics_engine</Filter>
-    </ClCompile>
-    <ClCompile Include="perlin.cpp">
-      <Filter>Source Files\math</Filter>
     </ClCompile>
     <ClCompile Include="terrain.cpp">
       <Filter>Source Files</Filter>
@@ -51,16 +54,100 @@
     <ClCompile Include="camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="loader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="state_ingame.cpp">
+    <ClCompile Include="input_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="perlin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="aabb.cpp">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="math.cpp">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="sphere.cpp">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="plane.cpp">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="shape.cpp">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="crate.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="entity_manager.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="render_loader.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="lodepng.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="scene_entity.cpp">
+      <Filter>Source Files\render_engine\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="wireframe.cpp">
+      <Filter>Source Files\render_engine\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="obj_loader.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="slate_platform1.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="bush1.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="maze.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="path_generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="floor.cpp">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClCompile>
+    <ClCompile Include="floor_normal.cpp">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClCompile>
+    <ClCompile Include="starting_platform.cpp">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClCompile>
+    <ClCompile Include="dynamic_aabb.cpp">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="texture_manager.cpp">
+      <Filter>Source Files\render_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="gui.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="state_in_game.cpp">
       <Filter>Source Files\game_state</Filter>
     </ClCompile>
-    <ClCompile Include="input_manager.cpp">
+    <ClCompile Include="state_main_menu.cpp">
+      <Filter>Source Files\game_state</Filter>
+    </ClCompile>
+    <ClCompile Include="endless_void.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,9 +158,6 @@
     <ClInclude Include="render_engine.h">
       <Filter>Source Files\render_engine</Filter>
     </ClInclude>
-    <ClInclude Include="perlin.h">
-      <Filter>Source Files\math</Filter>
-    </ClInclude>
     <ClInclude Include="terrain.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -83,19 +167,100 @@
     <ClInclude Include="camera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="loader.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="world_engine.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="game_state.h">
       <Filter>Source Files\game_state</Filter>
     </ClInclude>
-    <ClInclude Include="state_ingame.h">
+    <ClInclude Include="input_manager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="perlin.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aabb.h">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="plane.h">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="shape.h">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="crate.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="entity_manager.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="render_loader.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lodepng.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_entity.h">
+      <Filter>Source Files\render_engine\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="wireframe.h">
+      <Filter>Source Files\render_engine\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="obj_loader.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="slate_platform1.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="bush1.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="maze.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="path_generator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="floor.h">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClInclude>
+    <ClInclude Include="floor_normal.h">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClInclude>
+    <ClInclude Include="starting_platform.h">
+      <Filter>Source Files\entities\floors</Filter>
+    </ClInclude>
+    <ClInclude Include="dynamic_aabb.h">
+      <Filter>Source Files\physics_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="texture_manager.h">
+      <Filter>Source Files\render_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="gui.h">
+      <Filter>Source Files\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="state_in_game.h">
       <Filter>Source Files\game_state</Filter>
     </ClInclude>
-    <ClInclude Include="input_manager.h">
+    <ClInclude Include="state_main_menu.h">
+      <Filter>Source Files\game_state</Filter>
+    </ClInclude>
+    <ClInclude Include="endless_void.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -112,5 +277,22 @@
     <None Include="camera_frag.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
+    <None Include="default_frag.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="default_vert.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="resources\slate_platform1.obj">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\cube.obj">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\crate_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
